@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
-import SignaturePad, { PointGroup } from "signature_pad";
+import React, { useRef} from "react";
+import SignaturePad from "signature_pad";
 
 const App = () => {
-  const [signaturedata , setsignaturedata] = useState<PointGroup[]>([]);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   let signaturePad : SignaturePad;
 
@@ -14,7 +13,6 @@ const App = () => {
     if (signaturePad.isEmpty()) {
       alert("Please provide a signature first.");
     } else {
-      setsignaturedata(signaturePad.toData());
       const signatureData = signaturePad.toDataURL("image/jpeg");
       const link = document.createElement("a");
       link.download = "signature.jpg";
